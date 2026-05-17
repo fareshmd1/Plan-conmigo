@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hola Paula ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+overflow:hidden;
+text-align:center;
+}
+
+h1{
+font-size:3rem;
+color:#ff2e63;
+margin-bottom:15px;
+}
+
+h2{
+font-size:1.5rem;
+color:#444;
+margin-bottom:50px;
+padding:20px;
+}
+
+.buttons{
+position:relative;
+width:350px;
+height:200px;
+}
+
+button{
+position:absolute;
+padding:15px 30px;
+font-size:1.2rem;
+border:none;
+border-radius:15px;
+cursor:pointer;
+transition:0.2s;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+#yes{
+background:#ff2e63;
+color:white;
+left:40px;
+top:70px;
+}
+
+#yes:hover{
+transform:scale(1.08);
+}
+
+#no{
+background:#999;
+color:white;
+right:40px;
+top:70px;
+}
+
+.kiss{
+position:absolute;
+font-size:2rem;
+animation:float 4s linear infinite;
+opacity:0.8;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(100vh) rotate(0deg);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+.final-message{
+color:white;
+font-size:2.2rem;
+padding:20px;
+z-index:10;
+text-shadow:2px 2px 10px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Hola Paula 😘</h1>
+
+<h2>
+¿Te apetece ir a tomar algo conmigo esta tarde? 🍸
+</h2>
+
+<div class="buttons">
+<button id="yes">Sí ❤️</button>
+<button id="no">No 🙃</button>
+</div>
+
+<script>
+
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", () => {
+
+const maxX = 250;
+const maxY = 150;
+
+const randomX = Math.random() * maxX;
+const randomY = Math.random() * maxY;
+
+noBtn.style.left = randomX + "px";
+noBtn.style.top = randomY + "px";
+
+});
+
+document.getElementById("yes").addEventListener("click", () => {
+
+document.body.innerHTML = `
+<div class="final-message">
+💋 Perfecto 💋<br><br>
+Entonces a las 18:30 te paso a buscar 😘
+</div>
+`;
+
+document.body.style.background =
+"linear-gradient(135deg,#ff4d6d,#ff8fab)";
+
+for(let i = 0; i < 50; i++){
+
+const kiss = document.createElement("div");
+
+kiss.classList.add("kiss");
+
+kiss.innerHTML = "💋";
+
+kiss.style.left = Math.random() * 100 + "vw";
+
+kiss.style.animationDuration =
+(Math.random() * 3 + 2) + "s";
+
+kiss.style.fontSize =
+(Math.random() * 25 + 20) + "px";
+
+document.body.appendChild(kiss);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
